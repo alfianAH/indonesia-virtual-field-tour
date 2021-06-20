@@ -419,6 +419,7 @@ GameObject:
   - component: {fileID: 1411771581}
   - component: {fileID: 1411771583}
   - component: {fileID: 1411771582}
+  - component: {fileID: 1411771584}
   m_Layer: 5
   m_Name: Detection Info Text
   m_TagString: Untagged
@@ -487,6 +488,25 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1411771580}
   m_CullTransparentMesh: 1
+--- !u!95 &1411771584
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1411771580}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 02849aabb69fba64c92b144a61c3d022, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!21 &1433004252
 Material:
   serializedVersion: 6
@@ -1227,6 +1247,7 @@ MonoBehaviour:
   imageTargetDetails:
     name: Marker1
     sound: 0
+  detectionInfoAnimator: {fileID: 1411771584}
   detectionInfo: {fileID: 1411771582}
   detectedColor: {r: 0.3652295, g: 1, b: 0.30980396, a: 1}
   undetectedColor: {r: 1, g: 0.30980393, b: 0.30980393, a: 1}

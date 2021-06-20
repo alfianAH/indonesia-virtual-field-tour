@@ -10,11 +10,15 @@ namespace ImageTarget
     {
         public ImageTargetDetails imageTargetDetails;
 
+        [Header("Detection Info Text")] 
+        [SerializeField] private Animator detectionInfoAnimator;
         [SerializeField] private Text detectionInfo;
         [SerializeField] private Color detectedColor,
             undetectedColor;
         [SerializeField] private float colorIntervalTime = 1.5f;
+
         private Color currentColor;
+        private static readonly int IsDetected = Animator.StringToHash("isDetected");
 
         /// <summary>
         /// Action on image target detected
@@ -22,6 +26,9 @@ namespace ImageTarget
         public void OnImageTargetDetected()
         {
             Debug.Log("Target Detected");
+            // Set boolean in animator
+            detectionInfoAnimator.SetBool(IsDetected, true);
+            
             // Change text
             detectionInfo.text = $"{imageTargetDetails.name} terdeteksi";
             
@@ -39,8 +46,12 @@ namespace ImageTarget
         public void OnImageTargetLost()
         {
             Debug.Log("Target Lost");
+            // Set boolean in animator
+            detectionInfoAnimator.SetBool(IsDetected, false);
+
             // Change text
             detectionInfo.text = "Target belum ditemukan";
+            
             // Change text color
             currentColor = detectionInfo.color;
             StartCoroutine(ChangeTextColor(currentColor, undetectedColor));
