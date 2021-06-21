@@ -34,7 +34,7 @@ namespace ImageTarget
             
             // Change text color
             currentColor = detectionInfo.color;
-            StartCoroutine(ChangeTextColor(currentColor, detectedColor));
+            StartCoroutine(ChangeDetectionInfoColor(currentColor, detectedColor));
             
             // Play audio
             AudioManager.Instance.Play(imageTargetDetails.sound);
@@ -54,7 +54,7 @@ namespace ImageTarget
             
             // Change text color
             currentColor = detectionInfo.color;
-            StartCoroutine(ChangeTextColor(currentColor, undetectedColor));
+            StartCoroutine(ChangeDetectionInfoColor(currentColor, undetectedColor));
         }
         
         /// <summary>
@@ -63,7 +63,7 @@ namespace ImageTarget
         /// <param name="oldColor"></param>
         /// <param name="newColor"></param>
         /// <returns></returns>
-        private IEnumerator ChangeTextColor(Color oldColor, Color newColor)
+        private IEnumerator ChangeDetectionInfoColor(Color oldColor, Color newColor)
         {
             float startTime = 0.0f;
 
@@ -83,6 +83,7 @@ namespace ImageTarget
     public class ImageTargetDetails
     {
         public string name;
+        public string info;
         public ListSound sound;
     }
 }
