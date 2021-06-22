@@ -5,6 +5,8 @@ namespace Inputs
 {
     public class ButtonInputHandler : MonoBehaviour
     {
+        #region Pause and Resume Buttons
+
         /// <summary>
         /// Pause the game 
         /// </summary>
@@ -26,5 +28,29 @@ namespace Inputs
                 () => Time.timeScale = 1f)
             );
         }
+
+        #endregion
+
+        #region Info Button
+        
+        /// <summary>
+        /// Show information
+        /// </summary>
+        /// <param name="infoCanvasGroup">Information Canvas Group</param>
+        public void ShowInfo(CanvasGroup infoCanvasGroup)
+        {
+            StartCoroutine(FadingEffect.Fade(infoCanvasGroup));
+        }
+        
+        /// <summary>
+        /// Hide information
+        /// </summary>
+        /// <param name="infoCanvasGroup">Information Canvas Group</param>
+        public void HideInfo(CanvasGroup infoCanvasGroup)
+        {
+            StartCoroutine(FadingEffect.Fade(infoCanvasGroup));
+        }
+
+        #endregion
     }
 }

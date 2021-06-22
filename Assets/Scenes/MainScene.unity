@@ -822,7 +822,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: -375}
-  m_SizeDelta: {x: 0, y: 750}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &401911343
 MonoBehaviour:
@@ -1408,13 +1408,14 @@ GameObject:
   - component: {fileID: 987352002}
   - component: {fileID: 987352004}
   - component: {fileID: 987352003}
+  - component: {fileID: 987352005}
   m_Layer: 5
   m_Name: Info Panel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &987352002
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1475,6 +1476,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 987352001}
   m_CullTransparentMesh: 1
+--- !u!225 &987352005
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 987352001}
+  m_Enabled: 1
+  m_Alpha: 0
+  m_Interactable: 1
+  m_BlocksRaycasts: 0
+  m_IgnoreParentGroups: 0
 --- !u!1 &1136364817
 GameObject:
   m_ObjectHideFlags: 0
@@ -2311,7 +2324,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1786087857}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1946406102}
+        m_TargetAssemblyTypeName: Inputs.ButtonInputHandler, Assembly-CSharp
+        m_MethodName: ShowInfo
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 987352005}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.CanvasGroup, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1786087857
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3191,7 +3216,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2118878542}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1946406102}
+        m_TargetAssemblyTypeName: Inputs.ButtonInputHandler, Assembly-CSharp
+        m_MethodName: HideInfo
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 987352005}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.CanvasGroup, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &2118878542
 MonoBehaviour:
   m_ObjectHideFlags: 0
