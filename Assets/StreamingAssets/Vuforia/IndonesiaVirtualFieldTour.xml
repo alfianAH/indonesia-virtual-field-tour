@@ -1,6 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <QCARConfig xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="qcar_config.xsd">
   <Tracking>
-    <ImageTarget name="Notes_AR" size="10.000000 10.000000" />
+    <ImageTarget name="26-cover" size="25.000000 40.000000" />
+    <ImageTarget name="25-cover" size="25.000000 40.000000" />
+    <ImageTarget name="24-cover" size="25.000000 40.000000" />
+    <ImageTarget name="23-cover" size="25.000000 40.000000" />
+    <ImageTarget name="22-cover" size="25.000000 40.000000" />
+    <ImageTarget name="21-cover" size="25.000000 40.000000" />
+    <ImageTarget name="20-cover" size="25.000000 40.000000" />
+    <ImageTarget name="19-cover" size="25.000000 40.000000" />
+    <ImageTarget name="18-cover" size="25.000000 40.000000" />
+    <ImageTarget name="17-cover" size="25.000000 40.000000" />
+    <ImageTarget name="16-cover" size="25.000000 40.000000" />
+    <ImageTarget name="15-cover" size="25.000000 40.000000" />
+    <ImageTarget name="14-cover" size="25.000000 40.000000" />
+    <ImageTarget name="13-cover" size="25.000000 40.000000" />
+    <ImageTarget name="12-cover" size="25.000000 40.000000" />
+    <ImageTarget name="11-cover" size="25.000000 40.000000" />
+    <ImageTarget name="10-cover" size="25.000000 40.000000" />
+    <ImageTarget name="9-cover" size="25.000000 40.000000" />
+    <ImageTarget name="8-cover" size="25.000000 40.000000" />
+    <ImageTarget name="7-cover" size="25.000000 40.000000" />
+    <ImageTarget name="6-cover" size="25.000000 40.000000" />
+    <ImageTarget name="5-cover" size="25.000000 40.000000" />
+    <ImageTarget name="4-cover" size="25.000000 40.000000" />
+    <ImageTarget name="3-cover" size="25.000000 40.000000" />
+    <ImageTarget name="2-cover" size="25.000000 40.000000" />
+    <ImageTarget name="1-cover" size="25.000000 40.000000" />
   </Tracking>
 </QCARConfig>

@@ -83,6 +83,7 @@ namespace ImageTarget
     public class ImageTargetDetails
     {
         public string name;
+        [TextArea(3, 5)]
         public string info;
         public ListSound sound;
     }
