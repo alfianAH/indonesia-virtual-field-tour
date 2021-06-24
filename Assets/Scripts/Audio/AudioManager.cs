@@ -56,7 +56,8 @@ namespace Audio
         
 
         #endregion
-
+        
+        [ArrayElementTitle("listSound")]
         public Sound[] sounds;
 
         private void Awake()
