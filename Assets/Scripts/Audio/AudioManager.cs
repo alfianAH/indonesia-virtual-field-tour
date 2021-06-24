@@ -60,10 +60,14 @@ namespace Audio
         [ArrayElementTitle("listSound")]
         public Sound[] sounds;
 
+        private AudioSource audioSource;
+
         private void Awake()
         {
             SetInstance();
 
+            audioSource = GetComponent<AudioSource>();
+            
             foreach (Sound sound in sounds)
             {
                 // Make new Audio Source for each sound
@@ -85,6 +89,18 @@ namespace Audio
         public void Play(ListSound listSound)
         {
             GetAudioSource(listSound).Play();
+        }
+        
+        /// <summary>
+        /// Stop playing audio
+        /// </summary>
+        /// <param name="listSound">Type of sound that want to be played</param>
+        public void Stop(ListSound listSound)
+        {
+            AudioSource currentAudioSource = GetAudioSource(listSound);
+            // If current audio source is playing, stop it
+            if(currentAudioSource.isPlaying)
+                currentAudioSource.Stop();
         }
         
         /// <summary>

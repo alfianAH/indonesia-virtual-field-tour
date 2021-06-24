@@ -58,6 +58,9 @@ namespace Markers
             // Change text color
             currentColor = detectionInfo.color;
             StartCoroutine(ChangeColorEffect.ChangeTextColor(detectionInfo, currentColor, undetectedColor));
+            
+            // Stop playing audio
+            AudioManager.Instance.Stop(markerDetails.sound);
         }
     }
     

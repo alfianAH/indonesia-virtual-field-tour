@@ -14,6 +14,8 @@ namespace Audio
         [Range(-3, 3)] public float pitch = 1;
 
         public bool loop;
+        
+        [HideInInspector]
         public AudioSource source;
     }
 

@@ -3152,6 +3152,12 @@ MonoBehaviour:
     pitch: 1
     loop: 0
     source: {fileID: 1908776720}
+  - listSound: 1
+    clip: {fileID: 8300000, guid: de2651c5b76f4664f9ed63db4f30f9d6, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 1908776720}
 --- !u!4 &1908776722
 Transform:
   m_ObjectHideFlags: 0
