@@ -4,11 +4,11 @@ using Effects;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace ImageTarget
+namespace Markers
 {
-    public class ImageTargetManager : MonoBehaviour
+    public class MarkerManager : MonoBehaviour
     {
-        public ImageTargetDetails imageTargetDetails;
+        public MarkerDetails markerDetails;
 
         [Header("Detection Info Text")] 
         [SerializeField] private Animator detectionInfoAnimator;
@@ -29,14 +29,14 @@ namespace ImageTarget
             detectionInfoAnimator.SetBool(IsDetected, true);
             
             // Change text
-            detectionInfo.text = $"{imageTargetDetails.name} terdeteksi";
+            detectionInfo.text = $"{markerDetails.name} terdeteksi";
             
             // Change text color
             currentColor = detectionInfo.color;
             StartCoroutine(ChangeColorEffect.ChangeTextColor(detectionInfo, currentColor, detectedColor));
             
             // Play audio
-            AudioManager.Instance.Play(imageTargetDetails.sound);
+            AudioManager.Instance.Play(markerDetails.sound);
         }
         
         /// <summary>
@@ -57,7 +57,7 @@ namespace ImageTarget
     }
     
     [Serializable]
-    public class ImageTargetDetails
+    public class MarkerDetails
     {
         public string name;
         [TextArea(3, 5)]
