@@ -1,6 +1,6 @@
 using System;
-using System.Collections;
 using Audio;
+using Effects;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -15,7 +15,6 @@ namespace ImageTarget
         [SerializeField] private Text detectionInfo;
         [SerializeField] private Color detectedColor,
             undetectedColor;
-        [SerializeField] private float colorIntervalTime = 1.5f;
 
         private Color currentColor;
         private static readonly int IsDetected = Animator.StringToHash("isDetected");
@@ -34,7 +33,7 @@ namespace ImageTarget
             
             // Change text color
             currentColor = detectionInfo.color;
-            StartCoroutine(ChangeDetectionInfoColor(currentColor, detectedColor));
+            StartCoroutine(ChangeColorEffect.ChangeTextColor(detectionInfo, currentColor, detectedColor));
             
             // Play audio
             AudioManager.Instance.Play(imageTargetDetails.sound);
@@ -45,7 +44,6 @@ namespace ImageTarget
         /// </summary>
         public void OnImageTargetLost()
         {
-            Debug.Log("Target Lost");
             // Set boolean in animator
             detectionInfoAnimator.SetBool(IsDetected, false);
 
@@ -54,28 +52,7 @@ namespace ImageTarget
             
             // Change text color
             currentColor = detectionInfo.color;
-            StartCoroutine(ChangeDetectionInfoColor(currentColor, undetectedColor));
-        }
-        
-        /// <summary>
-        /// Change detection info text's color
-        /// </summary>
-        /// <param name="oldColor"></param>
-        /// <param name="newColor"></param>
-        /// <returns></returns>
-        private IEnumerator ChangeDetectionInfoColor(Color oldColor, Color newColor)
-        {
-            float startTime = 0.0f;
-
-            while (startTime < colorIntervalTime)
-            {
-                detectionInfo.color = Color.Lerp(oldColor, newColor, 
-                    startTime / colorIntervalTime);
-
-                startTime += Time.deltaTime;
-                
-                yield return null;
-            }
+            StartCoroutine(ChangeColorEffect.ChangeTextColor(detectionInfo, currentColor, undetectedColor));
         }
     }
     
