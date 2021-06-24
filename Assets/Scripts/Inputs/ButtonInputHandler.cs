@@ -49,7 +49,7 @@ namespace Inputs
         /// </summary>
         public void PauseGame()
         {
-            StartCoroutine(FadingEffect.Fade(pauseCanvasGroup, 
+            StartCoroutine(FadingEffect.FadeIn(pauseCanvasGroup, 
                 afterEffect:() => Time.timeScale = 0f)
             );
         }
@@ -59,7 +59,7 @@ namespace Inputs
         /// </summary>
         public void ResumeGame()
         {
-            StartCoroutine(FadingEffect.Fade(pauseCanvasGroup, 
+            StartCoroutine(FadingEffect.FadeOut(pauseCanvasGroup, 
                 () => Time.timeScale = 1f)
             );
         }
@@ -73,7 +73,7 @@ namespace Inputs
         /// </summary>
         public void ShowInfo()
         {
-            StartCoroutine(FadingEffect.Fade(infoCanvasGroup));
+            StartCoroutine(FadingEffect.FadeIn(infoCanvasGroup));
         }
         
         /// <summary>
@@ -81,7 +81,7 @@ namespace Inputs
         /// </summary>
         public void HideInfo()
         {
-            StartCoroutine(FadingEffect.Fade(infoCanvasGroup));
+            StartCoroutine(FadingEffect.FadeOut(infoCanvasGroup));
         }
 
         #endregion
