@@ -24,7 +24,6 @@ namespace Markers
         /// </summary>
         public void OnImageTargetDetected()
         {
-            Debug.Log("Target Detected");
             // Set boolean in animator
             detectionInfoAnimator.SetBool(IsDetected, true);
             
@@ -34,6 +33,9 @@ namespace Markers
             // Change text color
             currentColor = detectionInfo.color;
             StartCoroutine(ChangeColorEffect.ChangeTextColor(detectionInfo, currentColor, detectedColor));
+            
+            // Change marker info text
+            MarkerInfoManager.Instance.SetMarkerInfo(markerDetails.name, markerDetails.info);
             
             // Play audio
             AudioManager.Instance.Play(markerDetails.sound);
@@ -50,6 +52,9 @@ namespace Markers
             // Change text
             detectionInfo.text = "Target belum ditemukan";
             
+            // Change marker info text
+            MarkerInfoManager.Instance.UnsetMarkerInfo();
+
             // Change text color
             currentColor = detectionInfo.color;
             StartCoroutine(ChangeColorEffect.ChangeTextColor(detectionInfo, currentColor, undetectedColor));

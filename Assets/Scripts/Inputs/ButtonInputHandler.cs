@@ -5,13 +5,49 @@ namespace Inputs
 {
     public class ButtonInputHandler : MonoBehaviour
     {
+        #region Singleton
+
+        private static ButtonInputHandler instance;
+        private const string LOG = nameof(ButtonInputHandler);
+        
+        /// <summary>
+        /// Singleton method
+        /// </summary>
+        public static ButtonInputHandler Instance
+        {
+            get
+            {
+                if (instance == null)
+                {
+                    // Find instance
+                    instance = FindObjectOfType<ButtonInputHandler>();
+                    
+                    // If instance is not found, ...
+                    if (instance == null)
+                    {
+                        // Give log error
+                        Debug.LogError($"{LOG} not found");
+                    }
+                }
+
+                return instance;
+            }
+        }
+
+        #endregion
+        
+        [Header("Pause Handler")]
+        [SerializeField] private CanvasGroup pauseCanvasGroup;
+
+        [Header("Marker Info Handler")] 
+        [SerializeField] private CanvasGroup infoCanvasGroup;
+        
         #region Pause and Resume Buttons
 
         /// <summary>
         /// Pause the game 
         /// </summary>
-        /// <param name="pauseCanvasGroup">Pause Canvas Group</param>
-        public void PauseGame(CanvasGroup pauseCanvasGroup)
+        public void PauseGame()
         {
             StartCoroutine(FadingEffect.Fade(pauseCanvasGroup, 
                 afterEffect:() => Time.timeScale = 0f)
@@ -21,8 +57,7 @@ namespace Inputs
         /// <summary>
         /// Resume the game
         /// </summary>
-        /// <param name="pauseCanvasGroup">Pause Canvas Group</param>
-        public void ResumeGame(CanvasGroup pauseCanvasGroup)
+        public void ResumeGame()
         {
             StartCoroutine(FadingEffect.Fade(pauseCanvasGroup, 
                 () => Time.timeScale = 1f)
@@ -36,8 +71,7 @@ namespace Inputs
         /// <summary>
         /// Show information
         /// </summary>
-        /// <param name="infoCanvasGroup">Information Canvas Group</param>
-        public void ShowInfo(CanvasGroup infoCanvasGroup)
+        public void ShowInfo()
         {
             StartCoroutine(FadingEffect.Fade(infoCanvasGroup));
         }
@@ -45,8 +79,7 @@ namespace Inputs
         /// <summary>
         /// Hide information
         /// </summary>
-        /// <param name="infoCanvasGroup">Information Canvas Group</param>
-        public void HideInfo(CanvasGroup infoCanvasGroup)
+        public void HideInfo()
         {
             StartCoroutine(FadingEffect.Fade(infoCanvasGroup));
         }
