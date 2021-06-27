@@ -1,5 +1,7 @@
-﻿using Effects;
+﻿using Audio;
+using Effects;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace Inputs
 {
@@ -41,6 +43,12 @@ namespace Inputs
 
         [Header("Marker Info Handler")] 
         [SerializeField] private CanvasGroup infoCanvasGroup;
+
+        [Header("Mute Handler")] 
+        [SerializeField] private Image audioSettings;
+        [SerializeField] private Sprite muteSprite;
+        [SerializeField] private Sprite unmuteSprite;
+        [SerializeField] private bool isMute;
         
         #region Pause and Resume Buttons
 
@@ -50,7 +58,12 @@ namespace Inputs
         public void PauseGame()
         {
             StartCoroutine(FadingEffect.FadeIn(pauseCanvasGroup, 
-                afterEffect:() => Time.timeScale = 0f)
+                afterEffect: () =>
+                {
+                    Time.timeScale = 0f;
+                    // Pause the audio
+                    AudioManager.Instance.Pause();
+                })
             );
         }
         
@@ -60,8 +73,26 @@ namespace Inputs
         public void ResumeGame()
         {
             StartCoroutine(FadingEffect.FadeOut(pauseCanvasGroup, 
-                () => Time.timeScale = 1f)
+                () => Time.timeScale = 1f,
+                () => AudioManager.Instance.UnPause())
             );
+        }
+
+        #endregion
+
+        #region Mute and Unmute Buttons
+        
+        /// <summary>
+        /// Mute audio
+        /// </summary>
+        public void MuteAudio()
+        {
+            isMute = !isMute;
+            
+            // Change sprite
+            audioSettings.sprite = isMute ? muteSprite : unmuteSprite;
+            // Mute audio
+            AudioManager.Instance.Mute(isMute);
         }
 
         #endregion

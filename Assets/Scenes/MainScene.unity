@@ -529,7 +529,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 377822794}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1946406102}
+        m_TargetAssemblyTypeName: Inputs.ButtonInputHandler, Assembly-CSharp
+        m_MethodName: MuteAudio
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &377822794
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -550,7 +562,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 2f10ffb845f79e64097c627b49360077, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 196dc69a4f70a7b4a8b96dfb1bcb766e, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1322,6 +1334,20 @@ PrefabInstance:
       propertyPath: detectionInfo
       value: 
       objectReference: {fileID: 1411771582}
+    - target: {fileID: 6613746886709812989, guid: 49149577be1020745a39c652b517d42a, type: 3}
+      propertyPath: markerDetails.info
+      value: 'Naggroe Aceh Darussalam/Aceh adalah sebuah provinsi di Indonesia yang
+        ibu kotanya berada di Banda Aceh.Aceh terletak di ujung utara pulau Sumatra
+        dan merupakan provinsi paling barat di Indonesia.luas wilayahnya mencapai
+        57.956 km2 . Aceh merupakan salah satu provinsi di Indonesia yang diberi
+        status sebagai daerah istimewa dan juga diberi kewenangan otonomi khusus.
+        Tokoh pahlawan yang berasal dari daerah ini diantaranya Cut Nyak Dien dan
+        Sultan Iskandar Muda. Masjid Baiturrahman merupakan salah satu bangunan yang
+        menjadi icon dari provinsi aceh. Masjid Baiturrahman dibangun pada tahun
+        1612 di masa pemerintahan Sultan Iskandar Muda. Masjid Raya Baiturrahman
+        selamat dari peristiwa Gempa dan Tsunami pada tanggal 26 Desember 2004. Masjid
+        Baiturrahman merupakan salah satu objek wisata paling diminati di Aceh. '
+      objectReference: {fileID: 0}
     - target: {fileID: 6613746886709812989, guid: 49149577be1020745a39c652b517d42a, type: 3}
       propertyPath: detectionInfoAnimator
       value: 
@@ -2753,6 +2779,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pauseCanvasGroup: {fileID: 323171217}
   infoCanvasGroup: {fileID: 987352005}
+  audioSettings: {fileID: 377822794}
+  muteSprite: {fileID: 21300000, guid: 2f10ffb845f79e64097c627b49360077, type: 3}
+  unmuteSprite: {fileID: 21300000, guid: 196dc69a4f70a7b4a8b96dfb1bcb766e, type: 3}
+  isMute: 0
 --- !u!4 &1946406103
 Transform:
   m_ObjectHideFlags: 0

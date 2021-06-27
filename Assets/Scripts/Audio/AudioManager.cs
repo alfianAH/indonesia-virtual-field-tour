@@ -100,6 +100,40 @@ namespace Audio
         }
         
         /// <summary>
+        /// Pause audio
+        /// </summary>
+        public void Pause()
+        {
+            // Get currently playing audio source
+            AudioSource currentAudioSource = GetAudioSourcePlaying(true);
+            // If current audio source is playing, pause it
+            currentAudioSource.Pause();
+        }
+        
+        /// <summary>
+        /// Unpause the paused audio
+        /// </summary>
+        public void UnPause()
+        {
+            // Get currently paused audio source
+            AudioSource currentAudioSource = GetAudioSourcePlaying(false);
+            // If current audio source is paused, unpause it
+            currentAudioSource.UnPause();
+        }
+        
+        /// <summary>
+        /// Mute or Unmute audio
+        /// </summary>
+        /// <param name="isMute">True for mute, False for unmute</param>
+        public void Mute(bool isMute)
+        {
+            // Get currently playing audio source
+            AudioSource currentAudioSource = GetAudioSourcePlaying(true);
+            // Mute or unmute audio
+            currentAudioSource.mute = isMute;
+        }
+        
+        /// <summary>
         /// Get audio source for the right listSound
         /// </summary>
         /// <param name="listSound">Type of sound that want to be played</param>
@@ -115,6 +149,17 @@ namespace Audio
             }
 
             return s.source;
+        }
+        
+        /// <summary>
+        /// Get audio source that is currently playing
+        /// </summary>
+        /// <returns>Returns listSound's audio source</returns>
+        private AudioSource GetAudioSourcePlaying(bool isPlaying)
+        {
+            Sound s = Array.Find(sounds, sound => sound.source.isPlaying == isPlaying);
+
+            return s?.source;
         }
     }
 }
