@@ -14,7 +14,7 @@ namespace Effects
         /// <param name="newColor">Target text's new color</param>
         /// <param name="colorIntervalTime">Interval time to change color. Default is 1.5s</param>
         /// <returns></returns>
-        public static IEnumerator ChangeTextColor(Text targetText, 
+        public static IEnumerator ChangeColor(Text targetText, 
             Color oldColor, Color newColor, 
             float colorIntervalTime = 1.5f)
         {
@@ -23,6 +23,31 @@ namespace Effects
             while (startTime < colorIntervalTime)
             {
                 targetText.color = Color.Lerp(oldColor, newColor, 
+                    startTime / colorIntervalTime);
+
+                startTime += Time.deltaTime;
+                
+                yield return null;
+            }
+        }
+        
+        /// <summary>
+        /// Change targetImage's color
+        /// </summary>
+        /// <param name="targetImage">Target text</param>
+        /// <param name="oldColor">Target text's old color</param>
+        /// <param name="newColor">Target text's new color</param>
+        /// <param name="colorIntervalTime">Interval time to change color. Default is 1.5s</param>
+        /// <returns></returns>
+        public static IEnumerator ChangeColor(Image targetImage, 
+            Color oldColor, Color newColor, 
+            float colorIntervalTime = 1.5f)
+        {
+            float startTime = 0.0f;
+
+            while (startTime < colorIntervalTime)
+            {
+                targetImage.color = Color.Lerp(oldColor, newColor, 
                     startTime / colorIntervalTime);
 
                 startTime += Time.deltaTime;

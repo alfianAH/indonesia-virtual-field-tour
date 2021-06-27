@@ -1,8 +1,6 @@
 using System;
 using Audio;
-using Effects;
 using UnityEngine;
-using UnityEngine.UI;
 
 namespace Markers
 {
@@ -10,30 +8,14 @@ namespace Markers
     {
         public MarkerDetails markerDetails;
 
-        [Header("Detection Info Text")] 
-        [SerializeField] private Animator detectionInfoAnimator;
-        [SerializeField] private Text detectionInfo;
-        [SerializeField] private Color detectedColor,
-            undetectedColor;
-
-        private Color currentColor;
-        private static readonly int IsDetected = Animator.StringToHash("isDetected");
-
         /// <summary>
         /// Action on image target detected
         /// </summary>
         public void OnImageTargetDetected()
-        {
-            // Set boolean in animator
-            detectionInfoAnimator.SetBool(IsDetected, true);
-            
-            // Change text
-            detectionInfo.text = markerDetails.name;
-            
-            // Change text color
-            currentColor = detectionInfo.color;
-            StartCoroutine(ChangeColorEffect.ChangeTextColor(detectionInfo, currentColor, detectedColor));
-            
+        { 
+            // Set actions on detection info when image target is detected
+            MarkerInfoManager.Instance.OnImageTargetDetected(markerDetails);
+
             // Change marker info text
             MarkerInfoManager.Instance.SetMarkerInfo(markerDetails.name, markerDetails.info);
             
@@ -46,19 +28,12 @@ namespace Markers
         /// </summary>
         public void OnImageTargetLost()
         {
-            // Set boolean in animator
-            detectionInfoAnimator.SetBool(IsDetected, false);
-
-            // Change text
-            detectionInfo.text = "Arahkan ke kartu hak milik";
+            // Set actions on detection info when image target is lost
+            MarkerInfoManager.Instance.OnImageTargetLost();
             
             // Change marker info text
             MarkerInfoManager.Instance.UnsetMarkerInfo();
 
-            // Change text color
-            currentColor = detectionInfo.color;
-            StartCoroutine(ChangeColorEffect.ChangeTextColor(detectionInfo, currentColor, undetectedColor));
-            
             // Stop playing audio
             AudioManager.Instance.Stop(markerDetails.sound);
         }
