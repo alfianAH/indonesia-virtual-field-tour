@@ -42,6 +42,8 @@ namespace Markers
         [SerializeField] private Animator detectionInfoAnimator;
         [SerializeField] private Image detectionInfoImage;
         [SerializeField] private Text detectionInfoText;
+        [SerializeField] private Sprite detectedInfoSprite;
+        [SerializeField] private Sprite undetectedInfoSprite;
         [SerializeField] private Color detectedColor;
         [SerializeField] private Color undetectedColor;
         private Color currentColor;
@@ -102,6 +104,9 @@ namespace Markers
             StartCoroutine(ChangeColorEffect.ChangeColor(
                 detectionInfoImage, currentColor, detectedColor));
             
+            // Change detection info icon
+            detectionInfoImage.sprite = detectedInfoSprite;
+            
             // Change marker info text
             SetMarkerInfo(markerDetails.name, markerDetails.info);
         }
@@ -125,6 +130,9 @@ namespace Markers
             // Info image
             StartCoroutine(ChangeColorEffect.ChangeColor(
                 detectionInfoImage, currentColor, undetectedColor));
+            
+            // Change detection info icon
+            detectionInfoImage.sprite = undetectedInfoSprite;
             
             // Change marker info text
             UnsetMarkerInfo();
