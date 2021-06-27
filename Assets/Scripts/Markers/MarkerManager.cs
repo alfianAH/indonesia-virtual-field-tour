@@ -28,7 +28,7 @@ namespace Markers
             detectionInfoAnimator.SetBool(IsDetected, true);
             
             // Change text
-            detectionInfo.text = $"{markerDetails.name} terdeteksi";
+            detectionInfo.text = markerDetails.name;
             
             // Change text color
             currentColor = detectionInfo.color;
@@ -50,7 +50,7 @@ namespace Markers
             detectionInfoAnimator.SetBool(IsDetected, false);
 
             // Change text
-            detectionInfo.text = "Target belum ditemukan";
+            detectionInfo.text = "Arahkan ke kartu hak milik";
             
             // Change marker info text
             MarkerInfoManager.Instance.UnsetMarkerInfo();
