@@ -239,6 +239,7 @@ MonoBehaviour:
   muteSprite: {fileID: 0}
   unmuteSprite: {fileID: 0}
   isMute: 0
+  exitPanel: {fileID: 2025192180}
 --- !u!4 &201338661
 Transform:
   m_ObjectHideFlags: 0
@@ -456,7 +457,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 387652500}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 201338660}
+        m_TargetAssemblyTypeName: Inputs.ButtonInputHandler, Assembly-CSharp
+        m_MethodName: HideExitConfirmation
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &387652500
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1075,7 +1088,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1603965181}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 201338660}
+        m_TargetAssemblyTypeName: Inputs.ButtonInputHandler, Assembly-CSharp
+        m_MethodName: ExitGame
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1603965181
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1262,7 +1287,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1716402857}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 201338660}
+        m_TargetAssemblyTypeName: Inputs.ButtonInputHandler, Assembly-CSharp
+        m_MethodName: ShowExitConfirmation
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1716402857
 MonoBehaviour:
   m_ObjectHideFlags: 0

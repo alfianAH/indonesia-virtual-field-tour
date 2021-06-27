@@ -49,6 +49,9 @@ namespace Inputs
         [SerializeField] private Sprite muteSprite;
         [SerializeField] private Sprite unmuteSprite;
         [SerializeField] private bool isMute;
+
+        [Header("Exit Handler")] 
+        [SerializeField] private CanvasGroup exitPanel;
         
         #region Pause and Resume Buttons
 
@@ -76,6 +79,34 @@ namespace Inputs
                 () => Time.timeScale = 1f,
                 () => AudioManager.Instance.UnPause())
             );
+        }
+
+        #endregion
+
+        #region Exit Game
+        
+        /// <summary>
+        /// Show exit confirmation
+        /// </summary>
+        public void ShowExitConfirmation()
+        {
+            StartCoroutine(FadingEffect.FadeIn(exitPanel));
+        }
+        
+        /// <summary>
+        /// Hide exit confirmation
+        /// </summary>
+        public void HideExitConfirmation()
+        {
+            StartCoroutine(FadingEffect.FadeOut(exitPanel));
+        }
+        
+        /// <summary>
+        /// Exit game
+        /// </summary>
+        public void ExitGame()
+        {
+            Application.Quit();
         }
 
         #endregion
