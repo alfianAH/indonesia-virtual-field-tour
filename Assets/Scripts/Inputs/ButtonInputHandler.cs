@@ -1,5 +1,6 @@
 ﻿using Audio;
 using Effects;
+using SceneLoading;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -79,6 +80,26 @@ namespace Inputs
                 () => Time.timeScale = 1f,
                 () => AudioManager.Instance.UnPause())
             );
+        }
+
+        #endregion
+
+        #region Load Scene Button
+        
+        /// <summary>
+        /// Play game
+        /// </summary>
+        public void PlayGame()
+        {
+            SceneLoadTrigger.Instance.LoadScene("MainScene");
+        }
+        
+        /// <summary>
+        /// Back to home button
+        /// </summary>
+        public void BackToHome()
+        {
+            SceneLoadTrigger.Instance.LoadScene("HomeScene");
         }
 
         #endregion

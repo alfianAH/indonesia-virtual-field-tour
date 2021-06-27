@@ -107,7 +107,10 @@ namespace Audio
             // Get currently playing audio source
             AudioSource currentAudioSource = GetAudioSourcePlaying(true);
             // If current audio source is playing, pause it
-            currentAudioSource.Pause();
+            if(currentAudioSource != null)
+            {
+                currentAudioSource.Pause();
+            }
         }
         
         /// <summary>
@@ -118,7 +121,10 @@ namespace Audio
             // Get currently paused audio source
             AudioSource currentAudioSource = GetAudioSourcePlaying(false);
             // If current audio source is paused, unpause it
-            currentAudioSource.UnPause();
+            if(currentAudioSource != null)
+            {
+                currentAudioSource.UnPause();
+            }
         }
         
         /// <summary>
@@ -130,7 +136,10 @@ namespace Audio
             // Get currently playing audio source
             AudioSource currentAudioSource = GetAudioSourcePlaying(true);
             // Mute or unmute audio
-            currentAudioSource.mute = isMute;
+            if(currentAudioSource != null)
+            {
+                currentAudioSource.mute = isMute;
+            }
         }
         
         /// <summary>
