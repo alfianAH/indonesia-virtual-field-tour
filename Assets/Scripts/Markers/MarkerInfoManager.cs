@@ -39,8 +39,7 @@ namespace Markers
         #endregion
         
         [Header("Detection Info")]
-        [SerializeField] private Animator detectionInfoImageAnimator;
-        [SerializeField] private Animator detectionInfoTextAnimator;
+        [SerializeField] private Animator detectionInfoAnimator;
         [SerializeField] private Image detectionInfoImage;
         [SerializeField] private Text detectionInfoText;
         [SerializeField] private Color detectedColor;
@@ -61,7 +60,7 @@ namespace Markers
         /// </summary>
         /// <param name="title"></param>
         /// <param name="infoText"></param>
-        public void SetMarkerInfo(string title, string infoText)
+        private void SetMarkerInfo(string title, string infoText)
         {
             infoButton.interactable = true;
             markerTitle.text = title;
@@ -72,7 +71,7 @@ namespace Markers
         /// Unset marker info
         /// To prevent user open info when marker is not detected
         /// </summary>
-        public void UnsetMarkerInfo()
+        private void UnsetMarkerInfo()
         {
             infoButton.interactable = false;
             ButtonInputHandler.Instance.HideInfo();
@@ -81,13 +80,16 @@ namespace Markers
         #endregion
 
         #region Marker Detection Info
-
+        
+        /// <summary>
+        /// Actons when image target detected
+        /// </summary>
+        /// <param name="markerDetails">Marker details</param>
         public void OnImageTargetDetected(MarkerDetails markerDetails)
         {
             // Set boolean in animator
-            detectionInfoTextAnimator.SetBool(IsDetected, true);
-            detectionInfoImageAnimator.SetBool(IsDetected, true);
-            
+            detectionInfoAnimator.SetBool(IsDetected, true);
+
             // Change text
             detectionInfoText.text = markerDetails.name;
             
@@ -99,14 +101,19 @@ namespace Markers
             // Info image
             StartCoroutine(ChangeColorEffect.ChangeColor(
                 detectionInfoImage, currentColor, detectedColor));
+            
+            // Change marker info text
+            SetMarkerInfo(markerDetails.name, markerDetails.info);
         }
-
+        
+        /// <summary>
+        /// Actions when image target lost
+        /// </summary>
         public void OnImageTargetLost()
         {
             // Set boolean in animator
-            detectionInfoTextAnimator.SetBool(IsDetected, false);
-            detectionInfoImageAnimator.SetBool(IsDetected, false);
-            
+            detectionInfoAnimator.SetBool(IsDetected, false);
+
             // Change text
             detectionInfoText.text = "Arahkan ke kartu hak milik";
             
@@ -117,7 +124,10 @@ namespace Markers
                 detectionInfoText, currentColor, undetectedColor));
             // Info image
             StartCoroutine(ChangeColorEffect.ChangeColor(
-                detectionInfoImage, currentColor, detectedColor));
+                detectionInfoImage, currentColor, undetectedColor));
+            
+            // Change marker info text
+            UnsetMarkerInfo();
         }
 
         #endregion

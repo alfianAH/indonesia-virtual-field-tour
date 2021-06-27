@@ -15,9 +15,6 @@ namespace Markers
         { 
             // Set actions on detection info when image target is detected
             MarkerInfoManager.Instance.OnImageTargetDetected(markerDetails);
-
-            // Change marker info text
-            MarkerInfoManager.Instance.SetMarkerInfo(markerDetails.name, markerDetails.info);
             
             // Play audio
             AudioManager.Instance.Play(markerDetails.sound);
@@ -30,9 +27,6 @@ namespace Markers
         {
             // Set actions on detection info when image target is lost
             MarkerInfoManager.Instance.OnImageTargetLost();
-            
-            // Change marker info text
-            MarkerInfoManager.Instance.UnsetMarkerInfo();
 
             // Stop playing audio
             AudioManager.Instance.Stop(markerDetails.sound);
