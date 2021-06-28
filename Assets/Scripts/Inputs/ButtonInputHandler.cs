@@ -53,7 +53,7 @@ namespace Inputs
 
         [Header("Exit Handler")] 
         [SerializeField] private CanvasGroup exitPanel;
-        
+
         #region Pause and Resume Buttons
 
         /// <summary>
@@ -99,6 +99,7 @@ namespace Inputs
         /// </summary>
         public void BackToHome()
         {
+            Time.timeScale = 1f;
             SceneLoadTrigger.Instance.LoadScene("HomeScene");
         }
 
