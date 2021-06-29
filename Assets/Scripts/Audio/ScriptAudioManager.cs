@@ -164,12 +164,10 @@ namespace Audio
         /// <param name="isMute">True for mute, False for unmute</param>
         public void Mute(bool isMute)
         {
-            // Get currently playing audio source
-            AudioSource currentAudioSource = GetAudioSourcePlaying(true);
-            // Mute or unmute audio
-            if(currentAudioSource != null)
+            // Mute all script audio sources
+            foreach (ScriptSound scriptSound in scriptSounds)
             {
-                currentAudioSource.mute = isMute;
+                scriptSound.source.mute = isMute;
             }
         }
         
