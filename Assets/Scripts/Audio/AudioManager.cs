@@ -62,7 +62,8 @@ namespace Audio
         [ArrayElementTitle("listSound")]
         public Sound[] sounds;
         
-        private Dictionary<AudioSource, bool> pauseStates = new Dictionary<AudioSource, bool>();
+        private readonly Dictionary<AudioSource, bool> pauseStates = 
+            new Dictionary<AudioSource, bool>();
 
         private void Awake()
         {
