@@ -59,8 +59,11 @@ namespace Audio
 
         #endregion
         
-        [ArrayElementTitle("listSound")]
-        public Sound[] sounds;
+        [ArrayElementTitle("listScriptSound")]
+        public ScriptSound[] scriptSounds;
+        
+        [ArrayElementTitle("listEffectSound")]
+        public EffectSound[] effectSounds;
         
         private readonly Dictionary<AudioSource, bool> pauseStates = 
             new Dictionary<AudioSource, bool>();
@@ -69,38 +72,38 @@ namespace Audio
         {
             SetInstance();
 
-            foreach (Sound sound in sounds)
+            foreach (ScriptSound scriptSound in scriptSounds)
             {
                 // Make new Audio Source for each sound
-                sound.source = gameObject.AddComponent<AudioSource>();
+                scriptSound.source = gameObject.AddComponent<AudioSource>();
                 
                 // Set Audio Source's properties
-                sound.source.playOnAwake = false;
-                sound.source.clip = sound.clip;
-                sound.source.loop = sound.loop;
-                sound.source.pitch = sound.pitch;
-                sound.source.volume = sound.volume;
+                scriptSound.source.playOnAwake = false;
+                scriptSound.source.clip = scriptSound.clip;
+                scriptSound.source.loop = scriptSound.loop;
+                scriptSound.source.pitch = scriptSound.pitch;
+                scriptSound.source.volume = scriptSound.volume;
                 
-                pauseStates.Add(sound.source, false);
+                pauseStates.Add(scriptSound.source, false);
             }
         }
         
         /// <summary>
         /// Play audio
         /// </summary>
-        /// <param name="listSound">Type of sound that want to be played</param>
-        public void Play(ListSound listSound)
+        /// <param name="listScriptSound">Type of sound that want to be played</param>
+        public void Play(ListScriptSound listScriptSound)
         {
-            GetAudioSource(listSound).Play();
+            GetAudioSource(listScriptSound).Play();
         }
         
         /// <summary>
         /// Stop playing audio
         /// </summary>
-        /// <param name="listSound">Type of sound that want to be played</param>
-        public void Stop(ListSound listSound)
+        /// <param name="listScriptSound">Type of sound that want to be played</param>
+        public void Stop(ListScriptSound listScriptSound)
         {
-            AudioSource currentAudioSource = GetAudioSource(listSound);
+            AudioSource currentAudioSource = GetAudioSource(listScriptSound);
             // If current audio source is playing, stop it
             if(currentAudioSource.isPlaying)
                 currentAudioSource.Stop();
@@ -111,7 +114,7 @@ namespace Audio
         /// </summary>
         public void StopAll()
         {
-            foreach (Sound sound in sounds)
+            foreach (ScriptSound sound in scriptSounds)
             {
                 sound.source.Stop();
             }
@@ -176,15 +179,15 @@ namespace Audio
         /// <summary>
         /// Get audio source for the right listSound
         /// </summary>
-        /// <param name="listSound">Type of sound that want to be played</param>
+        /// <param name="listScriptSound">Type of sound that want to be played</param>
         /// <returns>Returns listSound's audio source</returns>
-        private AudioSource GetAudioSource(ListSound listSound)
+        private AudioSource GetAudioSource(ListScriptSound listScriptSound)
         {
-            Sound s = Array.Find(sounds, sound => sound.listSound == listSound);
+            ScriptSound s = Array.Find(scriptSounds, sound => sound.listScriptSound == listScriptSound);
 
             if (s == null)
             {
-                Debug.LogError($"Sound: {listSound} not found!");
+                Debug.LogError($"ScriptSound: {listScriptSound} not found!");
                 return null;
             }
 
@@ -197,7 +200,8 @@ namespace Audio
         /// <returns>Returns listSound's audio source</returns>
         private AudioSource GetAudioSourcePlaying(bool isPlaying)
         {
-            Sound s = Array.Find(sounds, sound => sound.source.isPlaying == isPlaying);
+            ScriptSound s = Array.Find(scriptSounds, 
+                sound => sound.source.isPlaying == isPlaying);
 
             return s?.source;
         }

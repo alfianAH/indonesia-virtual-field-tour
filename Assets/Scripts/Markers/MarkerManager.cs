@@ -17,7 +17,7 @@ namespace Markers
             MarkerInfoManager.Instance.OnImageTargetDetected(markerDetails);
             
             // Play audio
-            AudioManager.Instance.Play(markerDetails.sound);
+            AudioManager.Instance.Play(markerDetails.scriptSound);
         }
         
         /// <summary>
@@ -29,7 +29,7 @@ namespace Markers
             MarkerInfoManager.Instance.OnImageTargetLost();
 
             // Stop playing audio
-            AudioManager.Instance.Stop(markerDetails.sound);
+            AudioManager.Instance.Stop(markerDetails.scriptSound);
         }
     }
     
@@ -39,6 +39,6 @@ namespace Markers
         public string name;
         [TextArea(3, 5)]
         public string info;
-        public ListSound sound;
+        public ListScriptSound scriptSound;
     }
 }
