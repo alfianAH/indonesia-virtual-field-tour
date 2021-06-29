@@ -188,9 +188,10 @@ namespace Inputs
         /// <summary>
         /// Hide information
         /// </summary>
-        public void HideInfo()
+        public void HideInfo(bool playAudio)
         {
-            ButtonClickAudio();
+            if(playAudio)
+                ButtonClickAudio();
             StartCoroutine(FadingEffect.FadeOut(infoCanvasGroup));
         }
 

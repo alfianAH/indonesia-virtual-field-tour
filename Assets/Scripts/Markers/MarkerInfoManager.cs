@@ -76,7 +76,7 @@ namespace Markers
         private void UnsetMarkerInfo()
         {
             infoButton.interactable = false;
-            ButtonInputHandler.Instance.HideInfo();
+            ButtonInputHandler.Instance.HideInfo(false);
         }
 
         #endregion
