@@ -1,5 +1,7 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 namespace SceneLoading
 {
@@ -55,8 +57,13 @@ namespace SceneLoading
         }
 
         #endregion
-        
-        private const string LOADING_SCENE_NAME = "LoadingScene";
+
+        public Animator transitionAnimator;
+
+        [SerializeField] private Text progressText;
+        [SerializeField] private float waitTime = 1.0f;
+        private static readonly int StartKeyAnim = Animator.StringToHash("Start");
+        private static readonly int EndKeyAnim = Animator.StringToHash("End");
 
         private void Awake()
         {
@@ -70,7 +77,41 @@ namespace SceneLoading
         public void LoadScene(string sceneName)
         {
             LoadingData.SceneName = sceneName;
-            SceneManager.LoadScene(LOADING_SCENE_NAME);
+            StartCoroutine(LoadLevel());
+        }
+        
+        /// <summary>
+        /// Load level asynchronously and play animation
+        /// </summary>
+        /// <returns></returns>
+        private IEnumerator LoadLevel()
+        {
+            // Load scene async
+            AsyncOperation loadScene = SceneManager.LoadSceneAsync(LoadingData.SceneName);
+            // Don't allow scene activation
+            loadScene.allowSceneActivation = false;
+            
+            // Play animation
+            transitionAnimator.SetTrigger(StartKeyAnim);
+            
+            // Wait for transition
+            yield return new WaitForSeconds(waitTime);
+            
+            // Update progress text
+            if (!progressText.gameObject.activeInHierarchy)
+                progressText.gameObject.SetActive(true);
+            
+            float progress = Mathf.Clamp01(loadScene.progress / 0.9f);
+            progressText.text = $"Memuat {progress*100}%";
+            
+            // Wait until the loading is done
+            yield return new WaitUntil(() => loadScene.progress >= 0.9f);
+
+            // Load scene
+            loadScene.allowSceneActivation = true;
+            transitionAnimator.SetTrigger(EndKeyAnim);
+            
+            yield return null;
         }
     }
 }
