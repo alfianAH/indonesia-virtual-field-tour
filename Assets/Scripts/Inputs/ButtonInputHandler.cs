@@ -66,7 +66,7 @@ namespace Inputs
                 {
                     Time.timeScale = 0f;
                     // Pause the audio
-                    AudioManager.Instance.Pause();
+                    ScriptAudioManager.Instance.Pause();
                 })
             );
         }
@@ -78,7 +78,7 @@ namespace Inputs
         {
             StartCoroutine(FadingEffect.FadeOut(pauseCanvasGroup, 
                 () => Time.timeScale = 1f,
-                () => AudioManager.Instance.UnPause())
+                () => ScriptAudioManager.Instance.UnPause())
             );
         }
 
@@ -100,7 +100,7 @@ namespace Inputs
         public void BackToHome()
         {
             Time.timeScale = 1f;
-            AudioManager.Instance.StopAll();
+            ScriptAudioManager.Instance.StopAll();
             SceneLoadTrigger.Instance.LoadScene("HomeScene");
         }
 
@@ -146,7 +146,7 @@ namespace Inputs
             // Change sprite
             audioSettings.sprite = isMute ? muteSprite : unmuteSprite;
             // Mute audio
-            AudioManager.Instance.Mute(isMute);
+            ScriptAudioManager.Instance.Mute(isMute);
         }
 
         #endregion

@@ -5,24 +5,24 @@ using UnityEngine;
 
 namespace Audio
 {
-    public class AudioManager : MonoBehaviour
+    public class ScriptAudioManager : MonoBehaviour
     {
         #region Singleton
 
-        private static AudioManager instance;
-        private const string LOG = nameof(AudioManager);
+        private static ScriptAudioManager instance;
+        private const string LOG = nameof(ScriptAudioManager);
         
         /// <summary>
         /// Singleton method
         /// </summary>
-        public static AudioManager Instance
+        public static ScriptAudioManager Instance
         {
             get
             {
                 if (instance == null)
                 {
                     // Find instance
-                    instance = FindObjectOfType<AudioManager>();
+                    instance = FindObjectOfType<ScriptAudioManager>();
                     
                     // If instance is not found, ...
                     if (instance == null)
