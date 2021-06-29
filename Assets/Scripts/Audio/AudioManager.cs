@@ -1,4 +1,6 @@
 using System;
+using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 namespace Audio
@@ -59,6 +61,8 @@ namespace Audio
         
         [ArrayElementTitle("listSound")]
         public Sound[] sounds;
+        
+        private Dictionary<AudioSource, bool> pauseStates = new Dictionary<AudioSource, bool>();
 
         private void Awake()
         {
@@ -75,6 +79,8 @@ namespace Audio
                 sound.source.loop = sound.loop;
                 sound.source.pitch = sound.pitch;
                 sound.source.volume = sound.volume;
+                
+                pauseStates.Add(sound.source, false);
             }
         }
         
@@ -100,16 +106,37 @@ namespace Audio
         }
         
         /// <summary>
+        /// Stop all audio sources in dialogue sound
+        /// </summary>
+        public void StopAll()
+        {
+            foreach (Sound sound in sounds)
+            {
+                sound.source.Stop();
+            }
+        }
+        
+        /// <summary>
         /// Pause audio
         /// </summary>
         public void Pause()
         {
             // Get currently playing audio source
             AudioSource currentAudioSource = GetAudioSourcePlaying(true);
-            // If current audio source is playing, pause it
-            if(currentAudioSource != null)
+            
+            // If currentAudioSource is null, return
+            if (currentAudioSource == null) return;
+            
+            // Loop in pause state dictionary and get the same audio source
+            // as currentAudioSource
+            foreach (AudioSource source in pauseStates.Keys.Where(
+                source => source == currentAudioSource))
             {
-                currentAudioSource.Pause();
+                // Update the pause state to true
+                pauseStates[source] = true;
+                // Pause the audio source
+                source.Pause();
+                break;
             }
         }
         
@@ -118,12 +145,15 @@ namespace Audio
         /// </summary>
         public void UnPause()
         {
-            // Get currently paused audio source
-            AudioSource currentAudioSource = GetAudioSourcePlaying(false);
-            // If current audio source is paused, unpause it
-            if(currentAudioSource != null)
+            // Loop in pause state dictionary, and get the audio source that is paused
+            foreach (AudioSource source in pauseStates.Keys.Where(
+                source => pauseStates[source]))
             {
-                currentAudioSource.UnPause();
+                // Unpause the audio source
+                source.UnPause();
+                // Update the pause state to false
+                pauseStates[source] = false;
+                break;
             }
         }
         

@@ -100,6 +100,7 @@ namespace Inputs
         public void BackToHome()
         {
             Time.timeScale = 1f;
+            AudioManager.Instance.StopAll();
             SceneLoadTrigger.Instance.LoadScene("HomeScene");
         }
 
