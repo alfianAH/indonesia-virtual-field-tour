@@ -54,6 +54,21 @@ namespace Inputs
         [Header("Exit Handler")] 
         [SerializeField] private CanvasGroup exitPanel;
 
+        private EffectAudioManager effectAudioManager;
+
+        private void Awake()
+        {
+            effectAudioManager = EffectAudioManager.Instance;
+        }
+        
+        /// <summary>
+        /// Play button click audio
+        /// </summary>
+        private void ButtonClickAudio()
+        {
+            effectAudioManager.Play(ListEffectSound.ButtonClick);
+        }
+
         #region Pause and Resume Buttons
 
         /// <summary>
@@ -61,6 +76,7 @@ namespace Inputs
         /// </summary>
         public void PauseGame()
         {
+            ButtonClickAudio();
             StartCoroutine(FadingEffect.FadeIn(pauseCanvasGroup, 
                 afterEffect: () =>
                 {
@@ -76,6 +92,7 @@ namespace Inputs
         /// </summary>
         public void ResumeGame()
         {
+            ButtonClickAudio();
             StartCoroutine(FadingEffect.FadeOut(pauseCanvasGroup, 
                 () => Time.timeScale = 1f,
                 () => ScriptAudioManager.Instance.UnPause())
@@ -91,6 +108,7 @@ namespace Inputs
         /// </summary>
         public void PlayGame()
         {
+            ButtonClickAudio();
             SceneLoadTrigger.Instance.LoadScene("MainScene");
         }
         
@@ -99,6 +117,7 @@ namespace Inputs
         /// </summary>
         public void BackToHome()
         {
+            ButtonClickAudio();
             Time.timeScale = 1f;
             ScriptAudioManager.Instance.StopAll();
             SceneLoadTrigger.Instance.LoadScene("HomeScene");
@@ -113,6 +132,7 @@ namespace Inputs
         /// </summary>
         public void ShowExitConfirmation()
         {
+            ButtonClickAudio();
             StartCoroutine(FadingEffect.FadeIn(exitPanel));
         }
         
@@ -121,6 +141,7 @@ namespace Inputs
         /// </summary>
         public void HideExitConfirmation()
         {
+            ButtonClickAudio();
             StartCoroutine(FadingEffect.FadeOut(exitPanel));
         }
         
@@ -129,6 +150,7 @@ namespace Inputs
         /// </summary>
         public void ExitGame()
         {
+            ButtonClickAudio();
             Application.Quit();
         }
 
@@ -141,6 +163,7 @@ namespace Inputs
         /// </summary>
         public void MuteAudio()
         {
+            ButtonClickAudio();
             isMute = !isMute;
             
             // Change sprite
@@ -158,6 +181,7 @@ namespace Inputs
         /// </summary>
         public void ShowInfo()
         {
+            ButtonClickAudio();
             StartCoroutine(FadingEffect.FadeIn(infoCanvasGroup));
         }
         
@@ -166,6 +190,7 @@ namespace Inputs
         /// </summary>
         public void HideInfo()
         {
+            ButtonClickAudio();
             StartCoroutine(FadingEffect.FadeOut(infoCanvasGroup));
         }
 

@@ -62,9 +62,6 @@ namespace Audio
         [ArrayElementTitle("listScriptSound")]
         public ScriptSound[] scriptSounds;
         
-        [ArrayElementTitle("listEffectSound")]
-        public EffectSound[] effectSounds;
-        
         private readonly Dictionary<AudioSource, bool> pauseStates = 
             new Dictionary<AudioSource, bool>();
 
