@@ -479,7 +479,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4165262524641447728, guid: 626541923d32010418e6c3070680f60e, type: 3}
       propertyPath: m_Name
-      value: Button Input Handler (1)
+      value: Button Input Handler
       objectReference: {fileID: 0}
     - target: {fileID: 4165262524641447730, guid: 626541923d32010418e6c3070680f60e, type: 3}
       propertyPath: m_RootOrder
