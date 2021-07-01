@@ -44,6 +44,7 @@ namespace Inputs
 
         [Header("Marker Info Handler")] 
         [SerializeField] private CanvasGroup infoCanvasGroup;
+        [SerializeField] private RectTransform infoPanelTransform;
 
         [Header("Mute Handler")] 
         [SerializeField] private Image audioSettings;
@@ -182,6 +183,9 @@ namespace Inputs
         public void ShowInfo()
         {
             ButtonClickAudio();
+            
+            StartCoroutine(SwipeEffect.SwipeUp(infoPanelTransform,
+                Vector3.zero, 100f));
             StartCoroutine(FadingEffect.FadeIn(infoCanvasGroup));
         }
         
@@ -192,6 +196,9 @@ namespace Inputs
         {
             if(playAudio)
                 ButtonClickAudio();
+            
+            StartCoroutine(SwipeEffect.SwipeDown(infoPanelTransform,
+                2100 * Vector3.down, 100f));
             StartCoroutine(FadingEffect.FadeOut(infoCanvasGroup));
         }
 
