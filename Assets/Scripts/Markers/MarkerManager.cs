@@ -16,6 +16,9 @@ namespace Markers
             // Set actions on detection info when image target is detected
             MarkerInfoManager.Instance.OnImageTargetDetected(markerDetails);
             
+            // PLay rotation animation
+            MarkerAnimationManager.Instance.OnImageTargetDetected();
+            
             // Play audio
             ScriptAudioManager.Instance.Play(markerDetails.scriptSound);
         }
@@ -27,6 +30,9 @@ namespace Markers
         {
             // Set actions on detection info when image target is lost
             MarkerInfoManager.Instance.OnImageTargetLost();
+            
+            // PLay rotation animation
+            MarkerAnimationManager.Instance.OnImageTargetLost();
 
             // Stop playing audio
             ScriptAudioManager.Instance.Stop(markerDetails.scriptSound);

@@ -186,4 +186,4 @@ MonoBehaviour:
       sit. Nulla at volutpat diam ut venenatis tellus in metus vulputate. Nulla facilisi
       morbi tempus iaculis urna id volutpat. Eget nulla facilisi etiam dignissim.
       Sem integer vitae justo eget magna.
-    sound: 0
+    scriptSound: 0
