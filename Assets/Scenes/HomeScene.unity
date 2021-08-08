@@ -287,7 +287,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 825491004}
         m_TargetAssemblyTypeName: Inputs.ButtonInputHandler, Assembly-CSharp
         m_MethodName: PlayGame
         m_Mode: 1
@@ -420,7 +420,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 825491004}
         m_TargetAssemblyTypeName: Inputs.ButtonInputHandler, Assembly-CSharp
         m_MethodName: HideExitConfirmation
         m_Mode: 1
@@ -606,6 +606,17 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 654718994}
   m_CullTransparentMesh: 1
+--- !u!114 &825491004 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4165262524641447731, guid: 626541923d32010418e6c3070680f60e, type: 3}
+  m_PrefabInstance: {fileID: 596066052}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aeefba267ab541afbfe58016cf81c459, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &862577094
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1169,7 +1180,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 825491004}
         m_TargetAssemblyTypeName: Inputs.ButtonInputHandler, Assembly-CSharp
         m_MethodName: ExitGame
         m_Mode: 1
@@ -1368,7 +1379,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 825491004}
         m_TargetAssemblyTypeName: Inputs.ButtonInputHandler, Assembly-CSharp
         m_MethodName: ShowExitConfirmation
         m_Mode: 1

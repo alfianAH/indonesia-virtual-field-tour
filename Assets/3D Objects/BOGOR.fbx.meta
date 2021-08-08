@@ -1,38 +1,13 @@
 fileFormatVersion: 2
-guid: 9b1ffb28dfe5bee4281db04b0a455327
+guid: 3b0fdf0ac4570d449bb0250c5204da7b
 ModelImporter:
   serializedVersion: 20200
   internalIDToNameTable: []
-  externalObjects:
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Material
-    second: {fileID: 2100000, guid: 1198d95ec9fddcf498065e3798f9310f, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Material.003
-    second: {fileID: 2100000, guid: 073b202c76c3fb84880c4bd4596b8324, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Material.004
-    second: {fileID: 2100000, guid: b9a67d81e53bcef458f8f85fc370041c, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Material.005
-    second: {fileID: 2100000, guid: f740b8cdce226c54b9b567f4c430d89b, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: chrome
-    second: {fileID: 2100000, guid: 11d2c7a22f5f3664da607d9904c1bbe0, type: 2}
+  externalObjects: {}
   materials:
     materialImportMode: 2
     materialName: 0
-    materialSearch: 0
+    materialSearch: 1
     materialLocation: 1
   animations:
     legacyGenerateAnimations: 4

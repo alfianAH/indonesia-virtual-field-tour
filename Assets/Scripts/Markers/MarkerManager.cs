@@ -12,12 +12,18 @@ namespace Markers
         /// Action on image target detected
         /// </summary>
         public void OnImageTargetDetected()
-        { 
+        {
             // Set actions on detection info when image target is detected
             MarkerInfoManager.Instance.OnImageTargetDetected(markerDetails);
             
             // PLay rotation animation
-            MarkerAnimationManager.Instance.OnImageTargetDetected();
+            MarkerAnimationManager markerAnimation = transform.GetChild(0)
+                .GetComponent<MarkerAnimationManager>();
+            if(markerAnimation != null)
+            {
+                markerAnimation.gameObject.SetActive(true);
+                markerAnimation.OnImageTargetDetected();
+            }
             
             // Play audio
             ScriptAudioManager.Instance.Play(markerDetails.scriptSound);
@@ -32,7 +38,13 @@ namespace Markers
             MarkerInfoManager.Instance.OnImageTargetLost();
             
             // PLay rotation animation
-            MarkerAnimationManager.Instance.OnImageTargetLost();
+            MarkerAnimationManager markerAnimation = transform.GetChild(0)
+                .GetComponent<MarkerAnimationManager>();
+            if(markerAnimation != null)
+            {
+                markerAnimation.OnImageTargetLost();
+                markerAnimation.gameObject.SetActive(false);
+            }
 
             // Stop playing audio
             ScriptAudioManager.Instance.Stop(markerDetails.scriptSound);

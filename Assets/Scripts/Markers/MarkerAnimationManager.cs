@@ -44,9 +44,8 @@ namespace Markers
         /// </summary>
         public void OnImageTargetDetected()
         {
-            rotationAnimator.ResetTrigger(Stop);
             rotationAnimator.SetTrigger(Play);
-        }g
+        }
 
         /// <summary>
         /// Actions when image target lost
