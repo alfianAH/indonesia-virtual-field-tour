@@ -125,6 +125,22 @@ namespace Inputs
         }
 
         #endregion
+        
+        #region Load Link Button
+        
+        /// <summary>
+        /// Open url link in other app
+        /// </summary>
+        /// <param name="url">URL Link</param>
+        public void OpenLink(string url)
+        {
+            if(!string.IsNullOrWhiteSpace(url))
+            {
+                Application.OpenURL(url);
+            }
+        }
+        
+        #endregion
 
         #region Exit Game
         
