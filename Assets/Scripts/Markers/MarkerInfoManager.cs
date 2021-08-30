@@ -5,39 +5,8 @@ using UnityEngine.UI;
 
 namespace Markers
 {
-    public class MarkerInfoManager : MonoBehaviour
+    public class MarkerInfoManager : SingletonBaseClass<MarkerInfoManager>
     {
-        #region Singleton
-
-        private static MarkerInfoManager instance;
-        private const string LOG = nameof(MarkerInfoManager);
-        
-        /// <summary>
-        /// Singleton method
-        /// </summary>
-        public static MarkerInfoManager Instance
-        {
-            get
-            {
-                if (instance == null)
-                {
-                    // Find instance
-                    instance = FindObjectOfType<MarkerInfoManager>();
-                    
-                    // If instance is not found, ...
-                    if (instance == null)
-                    {
-                        // Give log error
-                        Debug.LogError($"{LOG} not found");
-                    }
-                }
-
-                return instance;
-            }
-        }
-
-        #endregion
-        
         [Header("Detection Info")]
         [SerializeField] private Animator detectionInfoAnimator;
         [SerializeField] private Image detectionInfoImage;
